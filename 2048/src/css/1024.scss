@@ -1,0 +1,97 @@
+body {
+
+    header {
+        padding: 10px;
+
+        h2,
+        p {
+            padding: 5px;
+            width: 640px;
+            margin: 0 auto;
+        }
+    }
+
+    main {
+        display: flex;
+        justify-content: center;
+
+        div#warp {
+            cursor: pointer;
+            user-select: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            align-items: center;
+            width: 640px;
+            height: 640px;
+            background: #929292;
+            border-radius: 10px;
+            padding: 8px 5px;
+
+            .c {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 150px;
+                height: 150px;
+                font-size: 90px;
+                border-radius: 5px; 
+            }
+
+            .c-0 {
+                background: #bdbdbd;
+            }
+
+            .c-2 {
+                background: #b8f349;
+                color: #2db00c;
+            }
+
+            .c-4 {
+                background: #54c0fe;
+                color: #0785fe;
+            }
+
+            .c-8 {
+                background: #fec85b;
+                color: #ff7c22;
+            }
+
+            .c-16 {
+                background: #fe9b57;
+                color: #fdd29d;
+            }
+
+            .c-32 {
+                background: #019d87;
+                color: #80e794;
+            }
+
+            .c-64 {
+                background: #7663fd;
+                color: #cac6f9;
+            }
+            .c-128 {
+                background: #f558c3;
+                color: #fabea2;
+            }
+            .c-256{
+                background: #3fb7ae;
+                color: #dbd9a8;
+            }
+            .c-512 {
+                background: #e0394b;
+                color: #f3d5b9;
+            }
+            .c-1024 {
+                background: #ece573;
+                color: #fe4e50;
+            }
+            .c-2048 {
+                background: #e0ba01;
+                color: #ffffff;
+            }
+
+        }
+    }
+}
