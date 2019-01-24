@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>链表</title>
+</head>
+<body>
+    <script>
+        // 链表 是存储有序元素的集合 但是元素在内存中并不是连续存放的
+        // 使用链表结构可以克服数组需要预先知道数据大小的缺点，链表结构可以充分利用计算机内存空间，实现灵活的内存动态管理
+        // 但是链表失去了数组随机读取的优点，同时链表由于增加了结点的指针域，空间开销比较大
+        class Node {
+            constructor(element) {
+                this.element = element; // 元素
+                this.next = undefined; // 指向下一个元素
+            }
+        }
+        class LinkedList {
+            // 构造函数声明一些全局变量
+            constructor(){
+                this.count = 0;
+                this.head = undefined;
+            }
+            // 添加元素
+            push(element) {
+                const node = new Node(element)
+                if (this.head === undefined) {
+                    this.head = node
+                } else {
+                    let current = this.head
+                    while (current.next !== undefined) {
+                        current = current.next
+                    }
+                    current.next = node
+                }
+                this.count ++
+            }
+            // 获取指定位置元素
+            getElementAt(index) {
+
+            }
+            // 在指定位置插入元素
+            insert(element, index) {
+
+            }
+            // 移除指定位置的元素
+            removeAt(index) {
+
+            }
+            // 返回指定元素的位置
+            indexOf(element) {
+
+            }
+            // 移除指定元素
+            remove(element) {
+
+            }
+            // 是否为空
+            isEmpty() {
+
+            }
+            // 长度
+            size() {
+
+            }
+            // 获取队首
+            getHead() {
+
+            }
+            // 清空队列
+            clear() {
+                this.head = undefined;
+                this.count = 0;
+            }
+            // 转换为字符串输出
+            toString() {
+
+            }
+        }
+        let a = new LinkedList()
+        a.push('dfdhgd')
+        a.push('f')
+        console.log(a)
+
+    </script>
+</body>
+</html>

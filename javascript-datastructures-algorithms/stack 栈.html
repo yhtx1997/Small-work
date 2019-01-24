@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>栈</title>
+</head>
+
+<body>
+    <script>
+        // 栈 遵循先进后出原则的有序集合  LIFO （Last In First Out） 
+        // 当前最后添加的一个元素与也是等待第一个删除的元素 这个元素所在的位置就叫栈顶
+        // 当前最早添加的元素同时也是最后一个删除的元素 这个元素所在的位置叫栈底
+
+        // 类名首字母大写
+        class Stack {
+            constructor() {
+                this.count = 0; // 长度
+                this.items = {}; // 栈
+            }
+            push(element) {
+                this.items[this.count] = element;
+                this.count++; // 下标加1
+            }
+            pop() {
+                if (this.isEmpty()) { // 如果是空直接返回 undefined
+                    return undefined;
+                }
+                this.count--; // 长度减1
+                const result = this.items[this.count];
+                delete this.items[this.count]; // 删除对象元素
+                return result;
+            }
+            peek() {
+                if (this.isEmpty()) {
+                    return undefined;
+                }
+                return this.items[this.count - 1];
+            }
+            isEmpty() {
+                return this.count === 0;
+            }
+            size() {
+                return this.count;
+            }
+            clear() {
+                // 两种方法
+                // while (!this.isEmpty()) {
+                //     this.pop();
+                // }
+                this.items = {};
+                this.count = 0;
+            }
+            toString() {
+                if (this.isEmpty()) {
+                    return '';
+                }
+                let objString = `${this.items[0]}`;
+                for (let i = 1; i < this.count; i++) {
+                    objString = `${objString},${this.items[i]}`;
+                }
+                return objString;
+            }
+        }
+        // 进制转换
+        // 十进制转换二进制是 十进制数不停的除2取余数，最后将余数取反得到二进制
+        function binary(decimal) {
+            let stack = new Stack()
+            let rem = 0
+            let binary = ''
+            while (decimal > 0) {
+                rem = Math.floor(decimal % 2)
+                stack.push(rem)
+                decimal = Math.floor(decimal / 2)
+            }
+            while (!stack.isEmpty()) {
+                binary += stack.pop().toString()
+            }
+            stack.toString()
+            return binary
+        }
+        console.log(binary(30))
+    </script>
+</body>
+
+</html>

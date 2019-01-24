@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>队列</title>
+</head>
+
+<body>
+    <script>
+        // 队列 遵循先进先出原则的有序集合 （First In First Out）
+        // 当前最新添加的成员必须要最后一个才能删除，当前最新添加的成员的位置叫队尾
+        // 当前最早添加的成员在删除时必须是最早被删除的，当前最早成员的位置叫队首
+        class Queue {
+            constructor() {
+                this.count = 0; // 整个队列下一成员的位置
+                this.lowestCount = 0; // 在第一位的成员位置
+                this.items = {}; // 用来存放的队列
+            }
+
+            enqueue(element) { // 添加队列成员 进入队列
+                this.items[this.count] = element; // 用下标做 key ;成员做 value
+                this.count++; // 队列长度加一
+            }
+
+            dequeue() { // 删除队列成员 离开队列
+                if (this.isEmpty()) { // 如果是空 
+                    return undefined; // 返回未定义 undefined
+                }
+                const result = this.items[this.lowestCount]; // 将队首的成员保存下
+                delete this.items[this.lowestCount]; // 将队首的成员删除掉 删除对象属性
+                this.lowestCount++; // 将队列提交前一位 指向队首的指针后移一位
+                return result; // 返回被删除的成员
+            }
+
+            peek() { // 返回队首的成员
+                if (this.isEmpty()) { // 非空才能继续处理
+                    return undefined;
+                }
+                return this.items[this.lowestCount];
+            }
+
+            isEmpty() { // 判断长度是不是 0 
+                return this.size() === 0;
+            }
+
+            clear() { // 将所有的数据初始化
+                this.items = {};
+                this.count = 0;
+                this.lowestCount = 0;
+            }
+
+            size() { // 队列长度 等于 整个队列下一成员的位置 减去 在第一位的成员位置
+                return this.count - this.lowestCount;
+            }
+
+            toString() {
+                if (this.isEmpty()) {
+                    return '';
+                }
+                let objString = `${this.items[this.lowestCount]}`;
+                for (let i = this.lowestCount + 1; i < this.count; i++) {
+                    objString = `${objString},${this.items[i]}`;
+                }
+                return objString;
+            }
+        }
+    </script>
+</body>
+
+</html>
