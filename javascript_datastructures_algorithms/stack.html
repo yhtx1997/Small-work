@@ -66,22 +66,44 @@
         }
         // 进制转换
         // 十进制转换二进制是 十进制数不停的除2取余数，最后将余数取反得到二进制
-        function binary(decimal) {
-            let stack = new Stack()
-            let rem = 0
-            let binary = ''
-            while (decimal > 0) {
-                rem = Math.floor(decimal % 2)
-                stack.push(rem)
-                decimal = Math.floor(decimal / 2)
+        function DecimalToBinary(number) {
+            let stack = new Stack(); // 新建栈
+            let rem = 0; // 余数
+            let binary = ''; // 结果
+            while (number > 0) {
+                rem = Math.floor(number % 2); // 取余数
+                stack.push(rem); // 将余数压栈
+                number = Math.floor(number / 2); // 去掉余数除以二
             }
-            while (!stack.isEmpty()) {
-                binary += stack.pop().toString()
+            while (!stack.isEmpty()) { // 不为空
+                binary += stack.pop(); // 将元素全部出栈
             }
-            stack.toString()
-            return binary
+            return binary;
         }
-        console.log(binary(30))
+        console.log(DecimalToBinary(3))
+        // 括号配对检查
+        function parenthesesChecker(symbols) {
+            let stack = new Stack(); // 新建栈
+            let balanced = true; // 检验括号匹配是否正确
+            const leftBrackets = '{[('; // 左侧的括号
+            const rightBrackets = '}])'; // 右侧的括号
+            for (let i = 0; i < symbols.length; i++) {
+                current = symbols[i]; // 取单个符号
+                if (leftBrackets.indexOf(current) >= 0) { // 如果是左侧的括号
+                    stack.push(current); // 将其压栈
+                } else if (stack.isEmpty()) { // 不是左侧括号，且栈为空，括号匹配错误
+                    balancd = false;
+                } else { // 不是左侧括号，且栈不为空，视为没有新的左侧括号，剩下的都是右侧括号
+                    let top = stack.pop();
+                    if (!(leftBrackets.indexOf(top) === rightBrackets.indexOf(current))) { // 检查栈顶（最后一个左侧括号）符号在 leftBrackets 的位置以及当前符号在 rightBrackets 的位置，位置相同视为配对成功
+                        balanced = false;
+                    }
+                }
+            }
+
+            return balanced; // 返回结果
+        }
+        console.log(parenthesesChecker('{[())]}'))
     </script>
 </body>
 
