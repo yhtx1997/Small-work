@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>链表</title>
+</head>
+<body>
+    <script>
+        // 链表 是存储有序元素的集合 但是元素在内存中并不是连续存放的
+        // 使用链表结构可以克服数组需要预先知道数据大小的缺点，链表结构可以充分利用计算机内存空间，实现灵活的内存动态管理
+        // 但是链表失去了数组随机读取的优点，同时链表由于增加了结点的指针域，空间开销比较大
+        class Node {
+            constructor(element) {
+                this.element = element; // 元素
+                this.next = undefined; // 指向下一个元素
+            }
+        }
+        class LinkedList {
+            // 构造函数声明一些全局变量
+            constructor(){
+                this.count = 0; // 长度
+                this.head = undefined; // 第一个元素
+            }
+            // 添加元素
+            push(element) {
+                const node = new Node(element);
+                if (this.head === undefined) {
+                    this.head = node;
+                } else {
+                    let current = this.head;
+                    while (current.next !== undefined) {
+                        current = current.next;
+                    }
+                    current.next = node;
+                }
+                this.count++;
+            }
+            // 获取指定位置元素
+            getElementAt(index) {
+                // 判断不是空链表
+                if (this.isEmpty() || index > this.count || index < 0) { 
+                    // 非空才能继续处理
+                    // 判断不大于最大长度，不小于最小长度（0）
+                    return undefined;
+                }
+                // 循环找到元素
+                let current = this.head;
+                for (let i = 0; i < index; i++){
+                    current = current.next;
+                }
+                return current;// 返回找到的元素
+            }
+            // 在指定位置插入元素
+            insert(element, index) {
+                // 创建一个元素
+                let current = new Node(element);
+                // 首先确定是不是在首位置插入
+                if (index === 0){
+                    current.next = this.head;
+                    this.head = current;
+                } else {
+                    // 找到指定位置前一个元素
+                    let previous = this.getElementAt(index - 1);
+                    // 将前一个元素的 next 赋值给插入元素的 next
+                    current.next = previous.next;
+                    // 将插入元素的 node 赋值给前一个元素的 next
+                    previous.next = current;
+                }
+                this.count++;
+            }
+            // 移除指定位置的元素
+            removeAt(index) {
+                let current = this.head;
+                if (index === 0){
+                    this.head = current.next;
+                } else {
+                    // 找到这个元素和这个元素之前的元素
+                    let previous = this.getElementAt(index - 1);
+                    current = previous.next;
+                    // 将这个元素的 next 赋值给这个元素之前元素的 next
+                    previous.next = current.next;
+                }
+                this.count--;
+                // 返回要移除的元素
+                return current.element;
+            }
+            // 返回指定元素的位置
+            indexOf(element) {
+                // 从头开始找
+                let current = this.head;
+                // 不超过最大长度
+                for (let i = 0; i < this.size() && current != null; i++){
+                    if (current.element === element){ // 找到相等的就返回下标
+                        return i;
+                    }
+                    current = current.next;
+                }
+                return -1;
+            }
+            // 移除指定元素
+            remove(element) {
+                // 获取指定元素位置
+                let index = this.indexOf(element);
+                // 移除指定位置元素
+                return this.removeAt(index);
+            }
+            // 是否为空
+            isEmpty() {
+                return this.size() === 0;
+            }
+            // 长度
+            size() {
+                return this.count;
+            }
+            // 获取队首
+            getHead() {
+                return this.head;
+            }
+            // 清空队列
+            clear() {
+                this.head = undefined;
+                this.count = 0;
+            }
+            // 转换为字符串输出
+            toString() {
+                if (this.head == null) {
+                    return '';
+                }
+                let objString = `${this.head.element}`;
+                let current = this.head.next;
+                for (let i = 1; i < this.size() && current != null; i++) {
+                    objString = `${objString},${current.element}`;
+                    current = current.next;
+                }
+                return objString;
+            }
+        }
+        let a = new LinkedList();
+        a.push('a');
+        a.push('b');
+        a.push('c');
+        a.push('d');
+        a.push('e');
+        a.push('f');
+        a.push('h');
+        a.push('i');
+        a.push('j');
+        a.push('k');
+        a.push('l');
+        a.push('m');
+        a.push('n');
+        a.push('o');
+        a.push('p');
+        a.push('q');
+        a.remove('a');
+        a.insert('a',1);
+        console.log(a);
+
+    </script>
+</body>
+</html>
