@@ -1,13 +1,18 @@
 <template>
   <div id='app'>
-    <div class='main'>
+    <h1>2048</h1>
+    <h4>当前总分： {{total}}</h4>
+    <div class='main' @touchstart='touchstart' @touchend='touchend'>
       <div class='row' v-for='(items,index) of arr' :key='index'>
         <div
           :class='`c-${item} item`'
           v-for='(item,index) of items'
           :key='index'
-        >{{item>0?item:'0'}}</div>
+        >{{item>0?item:''}}</div>
       </div>
+    </div>
+    <div class="message" v-show="this.messageShow">
+      <div>{{message}}</div>
     </div>
   </div>
 </template>
@@ -17,18 +22,68 @@ export default {
   name: 'app',
   data () {
     return {
-      arr: [[4, 16, 2, 4], [2, 8, 4, 2], [2, 16, 2, 4], [8, 16, 4, 2]], // 初始数组
-      Copyarr: [[], [], [], []],
+      startClientX: 0,
+      startClientY: 0,
+      arr: [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]], // 初始数组
+      Copyarr: [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]],
+      haveGroupingArr: [[], [], [], []],
       initData: [], // 数据初始化后的数组
       haveGrouping: false, // 有可以合并的数字
       itIsLeft: false, // 是否为向左合并，默认不是向左合并
       endGap: true, // 判断最边上有没有空隙 默认有空隙
       middleGap: true, // 真 为某行中间有空隙
       haveZero: true, // 当前页面有没有 0
-      total: 0 // 总分数
+      total: 0, // 总分数
+      message: '1351',
+      messageShow: false
     }
   },
   methods: {
+    touchstart (e) {
+      console.log('start')
+      this.startClientX = e.changedTouches[0].clientX
+      this.startClientY = e.changedTouches[0].clientY
+    },
+    touchend (e) {
+      console.log('end')
+      let endClientX = e.changedTouches[0].clientX
+      let endClientY = e.changedTouches[0].clientY
+      let x = Math.abs(this.startClientX - endClientX)
+      let y = Math.abs(this.startClientY - endClientY)
+      let direction = 0
+      // if (this.startClientX > endClientX && x > y) {
+      //   direction = 37
+      // } else if (this.startClientX < endClientX && x > y) {
+      //   direction = 39
+      // } else if (this.startClientY > endClientY && x < y) {
+      //   direction = 38
+      // } else if (this.startClientY < endClientY && x < y) {
+      //   direction = 40
+      // }
+      x > y ? this.startClientX > endClientX ? direction = 37 : direction = 39 : this.startClientY > endClientY ? direction = 38 : direction = 40
+      switch (direction) {
+        case 37:
+          //  ←
+          console.log('←')
+          this.command(direction)
+          break
+        case 38:
+          //  ↑
+          console.log('↑')
+          this.command(direction)
+          break
+        case 39:
+          //  →
+          this.command(direction)
+          console.log('→')
+          break
+        case 40:
+          //  ↓
+          console.log('↓')
+          this.command(direction)
+          break
+      }
+    },
     command (keyCode) { // 总部
       this.WhetherToRotate(keyCode) // 是否需要将上下操作转换为左右操作
       this.Init() // 数据初始化 合并数字
@@ -57,6 +112,7 @@ export default {
       // 判断每行中间有没有空隙
       this.MiddleGap() // 真 为某行中间有空隙
       this.EndPointGap() // 在没有中间空隙的条件下去判断最边上有没有空隙
+      this.itIshuave() // 判断有没有可合并数字
     },
     Rendering (keyCode) {
       this.AddZero() // 先将占位符加上
@@ -67,6 +123,7 @@ export default {
       console.log(`中间有空隙吗？ ${this.middleGap ? '有' : '没有'}`)
       console.log(`有可合并数字吗？ ${this.haveGrouping ? '有' : '没有'}`)
       console.log(`最边上有空隙吗？ ${this.endGap ? '有' : '没有'}`)
+      this.arr = this.Copyarr
     },
     RandomlyCreate () { // 随机空白处创建新数字
       // 判断有没有可以新建的地方
@@ -84,18 +141,30 @@ export default {
           })
         })
         // 取随机数 然后在空白坐标集合中找到它
-        subscript = Math.floor(Math.random() * zero.length)
-        if (Math.floor(Math.random() * 10) % 3 === 0) {
-          number = 4 // 三分之一的机会
-        } else {
-          number = 2 // 三分之二的机会
+        if (zero.length) {
+          subscript = Math.floor(Math.random() * zero.length)
+          if (Math.floor(Math.random() * 10) % 3 === 0) {
+            number = 4 // 三分之一的机会
+          } else {
+            number = 2 // 三分之二的机会
+          }
+          this.Copyarr[zero[subscript].x][zero[subscript].y] = number
         }
-        this.Copyarr[zero[subscript].x][zero[subscript].y] = number
-      } else {
-        console.log(this.haveGrouping)
-        alert('抱歉你失败了')
+        this.arr = this.Copyarr
+        this.total = 0
+        this.Copyarr.forEach(items => {
+          items.forEach(item => {
+            this.total += item
+            if (item === 2048) {
+              this.message = '恭喜成功达成2048'
+              this.messageShow = true
+            }
+          })
+        })
+      } else if (!this.haveGrouping && !this.endGap && !this.middleGap) {
+        this.message = '抱歉失败了'
+        this.messageShow = true
       }
-      this.arr = this.Copyarr
     },
     DataDetails () { // 非零数字详情
       let notZero = []
@@ -129,6 +198,7 @@ export default {
           grouping[index][i] = item.content
         })
       })
+      this.haveGroupingArr = grouping
       // 相邻且相同的数字相加
       initData = [[], [], [], []]
       if (this.itIsLeft) {
@@ -227,34 +297,57 @@ export default {
       }
       return afterCopyingArr
     },
-    itIshuave (grouping) { // 判断有没有可合并的数字
-      console.log(grouping)
+    itIshuave () { // 判断有没有可合并的数字
       this.haveGrouping = false
-      console.log(this.haveGrouping)
+      let grouping = this.haveGroupingArr
+      for (let j = 0; j < grouping.length; j++) {
+        let i = 0
+        while (i < grouping[j].length) {
+          if (grouping[j][i] === grouping[j][i + 1]) {
+            i += 2
+            this.haveGrouping = true
+          } else {
+            i++
+          }
+        }
+      }
+      grouping = this.ToRotate(grouping)
+      for (let j = 0; j < grouping.length; j++) {
+        let i = grouping[j].length - 1
+        while (i >= 0) {
+          if (grouping[j][i] === grouping[j][i - 1]) {
+            i -= 2
+            this.haveGrouping = true
+          } else {
+            i--
+          }
+        }
+      }
     }
   },
 
   mounted () { // 挂载后
+    this.RandomlyCreate()
     window.onkeydown = e => {
       switch (e.keyCode) {
         case 37:
           //  ←
-          console.log('←')
+          // console.log('←')
           this.command(e.keyCode)
           break
         case 38:
           //  ↑
-          console.log('↑')
+          // console.log('↑')
           this.command(e.keyCode)
           break
         case 39:
           //  →
           this.command(e.keyCode)
-          console.log('→')
+          // console.log('→')
           break
         case 40:
           //  ↓
-          console.log('↓')
+          // console.log('↓')
           this.command(e.keyCode)
           break
       }
@@ -265,12 +358,14 @@ export default {
 <style lang='stylus'>
 #app {
   display flex
-  justify-content center
+  align-items center
+  flex-direction column
 
   .main {
     cursor pointer
     user-select none
-    width 640px
+    max-width 640px
+    width 100%
     background #929292
     border-radius 10px
 
@@ -354,6 +449,22 @@ export default {
         background #e0ba01
         color #ffffff
       }
+    }
+  }
+  .message {
+    display flex
+    justify-content center
+    align-items center
+    position fixed
+    left 0
+    right 0
+    top 0
+    bottom 0
+    div {
+      width 320px
+      height 40px
+      border 1px solid #f5f5f5
+      box-shadow 3px 3px 5px 1px #ccc
     }
   }
 }
