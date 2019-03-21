@@ -1,5 +1,8 @@
 <template>
-  <div><img :src="logo" alt="" /></div>
+  <div class="logo">
+    <!-- <img :src="logo" alt="" /> -->
+    LOGO
+  </div>
 </template>
 
 <script>
@@ -13,4 +16,9 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.logo {
+  cursor: pointer;
+  align-self: center;
+}
+</style>

@@ -1,13 +1,17 @@
 <template>
   <section class="container">
-    <div></div>
+    <banner />
   </section>
 </template>
 
 <script>
+import Banner from '@/components/banner/banner'
+
 export default {
-  components: {}
+  components: {
+    Banner
+  }
 }
 </script>
 
-<style></style>
+<style lang="scss" scoped></style>
