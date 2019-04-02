@@ -102,7 +102,7 @@ button {
 }
 ul {
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   color: #555555;
   top: 59px;
   left: 0;
@@ -123,6 +123,14 @@ li {
   cursor: pointer;
   &:hover {
     background: #f5f5f5;
+  }
+}
+@media screen and (max-width: 768px) {
+  .search {
+    width: 50%;
+  }
+  input {
+    width: 100%;
   }
 }
 </style>

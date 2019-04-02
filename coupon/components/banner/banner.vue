@@ -1,9 +1,14 @@
 <template>
-  <swiper>
-    <swiper-slide v-for="item of banner" :key="item.id">
-      <img :src="item.src" :alt="item.alt">
-    </swiper-slide>
-  </swiper>
+  <div v-swiper:mySwiper="swiperOption" class="swiper banner">
+    <div class="swiper-wrapper">
+      <div v-for="item in banner" :key="item.id" class="swiper-slide">
+        <img :data-src="item.src" class="swiper-lazy" />
+      </div>
+    </div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-pagination"></div>
+  </div>
 </template>
 
 <script>
@@ -27,10 +32,39 @@ export default {
           src: '/images/1920x700-Rolex-banner-jon.jpg',
           alt: '手表'
         }
-      ]
+      ],
+      swiperOption: {
+        el: '.swiper',
+        autoplay: true,
+        delay: 3000,
+        loop: true,
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev'
+        },
+        lazy: {
+          loadPrevNext: true
+        }
+      }
     }
-  }
+  },
+  mounted() {}
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.banner {
+  max-height: 700px;
+  height: auto;
+}
+img {
+  width: 100%;
+}
+.swiper-slide {
+  height: auto;
+}
+</style>
