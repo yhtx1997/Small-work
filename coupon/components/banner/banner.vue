@@ -1,12 +1,14 @@
 <template>
-  <div v-swiper:mySwiper="swiperOption" class="swiper banner">
+  <div v-swiper:mySwiper="swiperOption" class="swiper">
     <div class="swiper-wrapper">
       <div v-for="item in banner" :key="item.id" class="swiper-slide">
-        <img :data-src="item.src" class="swiper-lazy" />
+        <a :href="item.linkTo">
+          <img :data-src="item.src" class="swiper-lazy" />
+        </a>
       </div>
     </div>
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev swiper-button-white"></div>
+    <div class="swiper-button-next swiper-button-white"></div>
     <div class="swiper-pagination"></div>
   </div>
 </template>
@@ -20,17 +22,20 @@ export default {
         {
           id: '1',
           src: '/images/3e6c35463762a51b54b3ca3abb422676.jpg',
-          alt: '相册封面'
+          alt: '相册封面',
+          linkTo: '/store'
         },
         {
           id: '2',
           src: '/images/7aeb93d3cd8f338a45c4adedde53c8d1.jpg',
-          alt: '星空'
+          alt: '星空',
+          linkTo: '/store'
         },
         {
           id: '3',
           src: '/images/1920x700-Rolex-banner-jon.jpg',
-          alt: '手表'
+          alt: '手表',
+          linkTo: '/store'
         }
       ],
       swiperOption: {
@@ -57,7 +62,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.banner {
+.swiper {
+  width: 100%;
   max-height: 700px;
   height: auto;
 }
@@ -65,6 +71,24 @@ img {
   width: 100%;
 }
 .swiper-slide {
-  height: auto;
+  height: 0;
+  padding-bottom: 36%;
+}
+.swiper /deep/ {
+  .swiper-pagination-bullet {
+    opacity: 1;
+    background: transparent;
+    border: 1px solid #ffffff;
+  }
+  .swiper-pagination-bullet-active {
+    background: #ffffff;
+  }
+  .swiper-button-white {
+    opacity: 0;
+    transition: all 0.5s;
+  }
+  &:hover .swiper-button-white {
+    opacity: 1;
+  }
 }
 </style>
