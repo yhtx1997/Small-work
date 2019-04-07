@@ -34,6 +34,7 @@ p {
   padding: 0;
   list-style: none;
   border: none;
+  font-family: Avenir Next, Calibri, Helvetica, Roboto, sans-serif;
 }
 .base {
   padding-bottom: 50px;

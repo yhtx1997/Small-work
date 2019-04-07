@@ -1,13 +1,13 @@
 <template>
   <section class="container">
-    <div v-if="show" :key="456">
+    <div v-if="show">
       <h1>404—Sorry!</h1>
       <p>
         Sorry! We can't seem to find that page. But since you're here, check out
         some of our best deals below.
       </p>
     </div>
-    <div v-else :key="798">
+    <div v-else>
       {{ $route.params.store }}
     </div>
   </section>
@@ -21,7 +21,7 @@ export default {
       show: false
     }
   },
-  mounted() {
+  created() {
     this.$route.params.store !== 'store'
       ? (this.show = true)
       : (this.show = false)
