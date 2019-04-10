@@ -1,7 +1,12 @@
 <template>
   <section class="container">
-    <banner class="banner" />
-    <index-content class="index-content" />
+    <banner :banner="banner" class="banner" />
+    <index-content
+      :brands="brands"
+      :discount="discount"
+      :code="code"
+      class="index-content"
+    />
     <public-details />
   </section>
 </template>
@@ -16,6 +21,222 @@ export default {
     Banner,
     IndexContent,
     PublicDetails
+  },
+  data() {
+    return {
+      code: [
+        {
+          id: '1',
+          type: 'Code',
+          title: '$25 Off Your Purchase',
+          uses: '1.5k uses today',
+          imgUrl: '/images/airbnb.com-coupons.jpg',
+          imgAlt: 'Airbnb',
+          linkTo: '100001',
+          to: 'https://www.baidu.com/'
+        },
+        {
+          id: '2',
+          type: 'Details',
+          title: 'Friends & Family Sale! Take 20% Off',
+          uses: '13k uses today',
+          imgUrl: '/images/kohls.com-coupons.jpg',
+          imgAlt: "Kohl's",
+          linkTo: '100002',
+          to: 'https://www.baidu.com/'
+        },
+        {
+          id: '3',
+          type: 'Code',
+          title: 'Extra 25% Off Your Purchase of $40 Or More',
+          uses: '1.7k uses today',
+          imgUrl: '/images/bedbathandbeyond.com-coupons.jpg',
+          imgAlt: 'Bed Bath & Beyond®',
+          linkTo: '100003',
+          to: 'https://www.baidu.com/'
+        },
+        {
+          id: '4',
+          type: 'Code',
+          title: 'Up to 30% Off With Amazon Coupons And Promo Codes',
+          uses: '2.4k uses today',
+          imgUrl: '/images/papajohns.com-coupons.jpg',
+          imgAlt: "Papa John's",
+          linkTo: '100004',
+          to: 'https://www.baidu.com/'
+        },
+        {
+          id: '5',
+          type: 'Code',
+          title: '16% Off One Order ',
+          uses: '2.7k uses today',
+          imgUrl: '/images/doordash.com-coupons.jpg',
+          imgAlt: 'DoorDash',
+          linkTo: '100005',
+          to: 'https://www.baidu.com/'
+        },
+        {
+          id: '6',
+          type: 'Code',
+          title: '50% Off Menu-priced Pizzas at Participating Locations',
+          uses: '1.8k uses today',
+          imgUrl: '/images/bestbuy.com-coupons.jpg',
+          imgAlt: 'Best Buy',
+          linkTo: '100006',
+          to: 'https://www.baidu.com/'
+        },
+        {
+          id: '7',
+          type: 'Code',
+          title: '$25 Off Your Purchase',
+          uses: '1.5k uses today',
+          imgUrl: '/images/airbnb.com-coupons.jpg',
+          imgAlt: 'Airbnb',
+          linkTo: '100007',
+          to: 'https://www.baidu.com/'
+        },
+        {
+          id: '8',
+          type: 'Details',
+          title: 'Friends & Family Sale! Take 20% Off',
+          uses: '13k uses today',
+          imgUrl: '/images/kohls.com-coupons.jpg',
+          imgAlt: "Kohl's",
+          linkTo: '100008',
+          to: 'https://www.baidu.com/'
+        },
+        {
+          id: '9',
+          type: 'Code',
+          title: 'Extra 25% Off Your Purchase of $40 Or More',
+          uses: '1.7k uses today',
+          imgUrl: '/images/bedbathandbeyond.com-coupons.jpg',
+          imgAlt: 'Bed Bath & Beyond®',
+          linkTo: '100009',
+          to: 'https://www.baidu.com/'
+        },
+        {
+          id: '10',
+          type: 'Code',
+          title: 'Up to 30% Off With Amazon Coupons And Promo Codes',
+          uses: '2.4k uses today',
+          imgUrl: '/images/papajohns.com-coupons.jpg',
+          imgAlt: "Papa John's",
+          linkTo: '100010',
+          to: 'https://www.baidu.com/'
+        },
+        {
+          id: '11',
+          type: 'Code',
+          title: '16% Off One Order ',
+          uses: '2.7k uses today',
+          imgUrl: '/images/doordash.com-coupons.jpg',
+          imgAlt: 'DoorDash',
+          linkTo: '100011',
+          to: 'https://www.baidu.com/'
+        },
+        {
+          id: '12',
+          type: 'Code',
+          title: '50% Off Menu-priced Pizzas at Participating Locations',
+          uses: '1.8k uses today',
+          imgUrl: '/images/bestbuy.com-coupons.jpg',
+          imgAlt: 'Best Buy',
+          linkTo: '100012',
+          to: 'https://www.baidu.com/'
+        }
+      ],
+      brands: [
+        {
+          id: `1`,
+          linkTo: `/store`,
+          brandUrl: `/images/airbnb.com-coupons.jpg`,
+          brandAlt: `Airbnb`
+        },
+        {
+          id: `2`,
+          linkTo: `/store`,
+          brandUrl: `/images/kohls.com-coupons.jpg`,
+          brandAlt: `Kohl's`
+        },
+        {
+          id: `3`,
+          linkTo: `/store`,
+          brandUrl: `/images/bedbathandbeyond.com-coupons.jpg`,
+          brandAlt: `Bed Bath & Beyond®`
+        },
+        {
+          id: `4`,
+          linkTo: `/store`,
+          brandUrl: `/images/papajohns.com-coupons.jpg`,
+          brandAlt: `Papa John's`
+        },
+        {
+          id: `5`,
+          linkTo: `/store`,
+          brandUrl: `/images/doordash.com-coupons.jpg`,
+          brandAlt: `DoorDash`
+        },
+        {
+          id: `6`,
+          linkTo: `/store`,
+          brandUrl: `/images/bestbuy.com-coupons.jpg`,
+          brandAlt: `Best Buy`
+        }
+      ],
+      banner: [
+        {
+          id: '1',
+          src: '/images/3e6c35463762a51b54b3ca3abb422676.jpg',
+          alt: '相册封面',
+          linkTo: '/store'
+        },
+        {
+          id: '2',
+          src: '/images/7aeb93d3cd8f338a45c4adedde53c8d1.jpg',
+          alt: '星空',
+          linkTo: '/store'
+        },
+        {
+          id: '3',
+          src: '/images/1920x700-Rolex-banner-jon.jpg',
+          alt: '手表',
+          linkTo: '/store'
+        }
+      ],
+      discount: [
+        {
+          id: '1',
+          linkTo: '/store',
+          bgUrl: '/images/VS743C3MUFDZPIQ466MXNLY6OE.jpeg',
+          bgAlt: '20%, 15%, or 10% Off',
+          iconUrl: '/images/macys.com-coupons.jpg',
+          iconAlt: "Macy's",
+          title: '20%, 15%, or 10% Off',
+          desc: "Macy's Code"
+        },
+        {
+          id: '2',
+          linkTo: '/store',
+          bgUrl: '/images/NCS2UIL7T5DXNIFR2GN5KGH7MM.jpeg',
+          bgAlt: 'Up to $20 Off',
+          iconUrl: '/images/turbotax.com-coupons.jpg',
+          iconAlt: 'TurboTax',
+          title: 'Up to $20 Off',
+          desc: 'TurboTax Sale'
+        },
+        {
+          id: '3',
+          linkTo: '/error',
+          bgUrl: '/images/5OOPNIB5I5APNAIJRRQEPCQN5E.jpeg',
+          bgAlt: '20% Off $75',
+          iconUrl: '/images/gnc.com-coupons.jpg',
+          iconAlt: 'GNC',
+          title: ' 20% Off $75 ',
+          desc: ' GNC Code '
+        }
+      ]
+    }
   }
 }
 </script>

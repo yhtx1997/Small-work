@@ -7,7 +7,7 @@
       @blur="searchBlur"
       @keyup="searchInput"
     />
-    <button></button>
+    <button @click="search"></button>
     <ul v-show="show">
       <li v-for="item of hotSearch" :key="item.id" @click="liClick">
         {{ item.title }}
@@ -63,6 +63,7 @@ export default {
     },
     liClick(e) {
       this.searchText = e.currentTarget.innerText
+      this.search()
     },
     searchInput() {
       const afterHot = this.afterHot
@@ -70,6 +71,14 @@ export default {
       this.hotSearch = afterHot.filter(
         e => e.title.toLowerCase().indexOf(searchText.toLowerCase()) !== -1
       )
+    },
+    search() {
+      this.$router.push({
+        name: 'search',
+        query: {
+          query: this.searchText
+        }
+      })
     }
   }
 }

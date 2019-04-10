@@ -1,8 +1,8 @@
 <template>
   <div class="content">
-    <index-discount />
-    <top-brnades />
-    <top-offers />
+    <index-discount :discount="discount" />
+    <top-brnades :brands="brands" />
+    <top-offers :code="code" />
   </div>
 </template>
 
@@ -17,6 +17,26 @@ export default {
     IndexDiscount,
     TopBrnades,
     TopOffers
+  },
+  props: {
+    brands: {
+      type: Array,
+      default() {
+        return []
+      }
+    },
+    discount: {
+      type: Array,
+      default() {
+        return []
+      }
+    },
+    code: {
+      type: Array,
+      default() {
+        return []
+      }
+    }
   }
 }
 </script>

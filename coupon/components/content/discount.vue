@@ -1,8 +1,8 @@
 <template>
   <div class="discpunt">
     <public-title :private-title="`Deals Up to 70% Off Are In Bloom`" />
-    <div class="items">
-      <div v-for="item of items" :key="item.id" class="item">
+    <div v-if="discount.length" class="items">
+      <div v-for="item of discount" :key="item.id" class="item">
         <a :href="item.linkTo">
           <img :src="item.bgUrl" :alt="item.bgAlt" class="item-bg" />
           <div class="details">
@@ -27,40 +27,12 @@ export default {
   components: {
     PublicTitle
   },
-  data() {
-    return {
-      items: [
-        {
-          id: '1',
-          linkTo: '/store',
-          bgUrl: '/images/VS743C3MUFDZPIQ466MXNLY6OE.jpeg',
-          bgAlt: '20%, 15%, or 10% Off',
-          iconUrl: '/images/macys.com-coupons.jpg',
-          iconAlt: "Macy's",
-          title: '20%, 15%, or 10% Off',
-          desc: "Macy's Code"
-        },
-        {
-          id: '2',
-          linkTo: '/store',
-          bgUrl: '/images/NCS2UIL7T5DXNIFR2GN5KGH7MM.jpeg',
-          bgAlt: 'Up to $20 Off',
-          iconUrl: '/images/turbotax.com-coupons.jpg',
-          iconAlt: 'TurboTax',
-          title: 'Up to $20 Off',
-          desc: 'TurboTax Sale'
-        },
-        {
-          id: '3',
-          linkTo: '/error',
-          bgUrl: '/images/5OOPNIB5I5APNAIJRRQEPCQN5E.jpeg',
-          bgAlt: '20% Off $75',
-          iconUrl: '/images/gnc.com-coupons.jpg',
-          iconAlt: 'GNC',
-          title: ' 20% Off $75 ',
-          desc: ' GNC Code '
-        }
-      ]
+  props: {
+    discount: {
+      type: Array,
+      default() {
+        return []
+      }
     }
   }
 }

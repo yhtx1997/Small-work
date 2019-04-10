@@ -1,8 +1,8 @@
 <template>
   <div class="top-brands">
     <public-title :private-title="`Top Brands`" />
-    <div class="items">
-      <div v-for="item of items" :key="item.id" class="item">
+    <div v-if="brands.length" class="items">
+      <div v-for="item of brands" :key="item.id" class="item">
         <a :href="item.linkTo">
           <img :src="item.brandUrl" :alt="item.brandAlt" class="item-img" />
         </a>
@@ -19,46 +19,12 @@ export default {
   components: {
     PublicTitle
   },
-  data() {
-    return {
-      items: [
-        {
-          id: `1`,
-          linkTo: `/store`,
-          brandUrl: `/images/airbnb.com-coupons.jpg`,
-          brandAlt: `Airbnb`
-        },
-        {
-          id: `2`,
-          linkTo: `/store`,
-          brandUrl: `/images/kohls.com-coupons.jpg`,
-          brandAlt: `Kohl's`
-        },
-        {
-          id: `3`,
-          linkTo: `/store`,
-          brandUrl: `/images/bedbathandbeyond.com-coupons.jpg`,
-          brandAlt: `Bed Bath & Beyond®`
-        },
-        {
-          id: `4`,
-          linkTo: `/store`,
-          brandUrl: `/images/papajohns.com-coupons.jpg`,
-          brandAlt: `Papa John's`
-        },
-        {
-          id: `5`,
-          linkTo: `/store`,
-          brandUrl: `/images/doordash.com-coupons.jpg`,
-          brandAlt: `DoorDash`
-        },
-        {
-          id: `6`,
-          linkTo: `/store`,
-          brandUrl: `/images/bestbuy.com-coupons.jpg`,
-          brandAlt: `Best Buy`
-        }
-      ]
+  props: {
+    brands: {
+      type: Array,
+      default() {
+        return []
+      }
     }
   }
 }

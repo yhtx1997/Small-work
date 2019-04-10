@@ -19,23 +19,6 @@ export default {
 </script>
 
 <style lang="scss">
-body,
-div,
-ul,
-input,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  border: none;
-  font-family: Avenir Next, Calibri, Helvetica, Roboto, sans-serif;
-}
 .base {
   padding-bottom: 50px;
   position: relative;

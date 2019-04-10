@@ -1,7 +1,6 @@
 <template>
   <div class="logo">
-    <!-- <img :src="logo" alt="" /> -->
-    LOGO
+    <nuxt-link to="/">LOGO</nuxt-link>
   </div>
 </template>
 
@@ -18,7 +17,10 @@ export default {
 
 <style lang="scss" scoped>
 .logo {
-  cursor: pointer;
-  align-self: center;
+  display: flex;
+  align-items: center;
+  a {
+    color: #ffffff;
+  }
 }
 </style>
