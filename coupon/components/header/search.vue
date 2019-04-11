@@ -31,15 +31,15 @@ export default {
     this.afterHot = [
       {
         id: '1',
-        title: 'coupon'
+        title: '$'
       },
       {
         id: '2',
-        title: '50%'
+        title: '%'
       },
       {
         id: '3',
-        title: 'code'
+        title: '50'
       },
       {
         id: '4',
@@ -47,12 +47,24 @@ export default {
       },
       {
         id: '5',
-        title: 'Cothes'
+        title: 'Airbnb'
       }
     ]
     this.hotSearch = this.afterHot
   },
   methods: {
+    searchInput({ keyCode }) {
+      if (keyCode === 13) {
+        this.searchBlur()
+        this.search()
+        return
+      }
+      const afterHot = this.afterHot
+      const searchText = this.searchText
+      this.hotSearch = afterHot.filter(
+        e => e.title.toLowerCase().indexOf(searchText.toLowerCase()) !== -1
+      )
+    },
     searchFocus() {
       this.show = true
     },
@@ -65,19 +77,9 @@ export default {
       this.searchText = e.currentTarget.innerText
       this.search()
     },
-    searchInput() {
-      const afterHot = this.afterHot
-      const searchText = this.searchText
-      this.hotSearch = afterHot.filter(
-        e => e.title.toLowerCase().indexOf(searchText.toLowerCase()) !== -1
-      )
-    },
     search() {
       this.$router.push({
-        name: 'search',
-        query: {
-          query: this.searchText
-        }
+        path: `/search/${encodeURIComponent(this.searchText)}`
       })
     }
   }

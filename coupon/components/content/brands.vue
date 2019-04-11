@@ -3,7 +3,7 @@
     <public-title :private-title="`Top Brands`" />
     <div v-if="brands.length" class="items">
       <div v-for="item of brands" :key="item.id" class="item">
-        <a :href="item.linkTo">
+        <a :href="encodeURI(item.linkTo)">
           <img :src="item.brandUrl" :alt="item.brandAlt" class="item-img" />
         </a>
       </div>

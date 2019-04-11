@@ -1,8 +1,8 @@
 <template>
   <div v-if="code.length" class="items">
     <div
-      v-for="item of code"
-      :key="item.id"
+      v-for="(item, index) of code"
+      :key="index"
       class="item"
       @click="itemClick(item)"
     >
@@ -57,13 +57,12 @@ export default {
 .items {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
 }
 .item {
-  width: 24%;
+  width: calc(95% / 4);
   height: 0;
   padding-bottom: 24%;
-  margin-bottom: 0.5%;
+  margin: 0.5%;
   background: #ffffff;
   border: 1px solid #e7e7e7;
   border-radius: 2px;

@@ -1,7 +1,7 @@
 <template>
   <div class="store">
-    <public-title :private-title="`Store`" />
-    <public-code class="store-right" />
+    <public-title :private-title="title" />
+    <public-code :code="code" class="store-right" />
     <public-details />
   </div>
 </template>
@@ -17,6 +17,23 @@ export default {
     PublicTitle,
     PublicCode,
     PublicDetails
+  },
+  data() {
+    return {
+      code: [],
+      title: ''
+    }
+  },
+  async asyncData({ $axios }) {
+    const { data } = await $axios.get('/api/store.json')
+    return {
+      data: data.store
+    }
+  },
+  mounted() {
+    const queryid = this.$route.params.id
+    this.code = this.data.filter(e => e.class === queryid)
+    this.title = this.code[0].imgAlt
   }
 }
 </script>

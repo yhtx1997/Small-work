@@ -2,9 +2,7 @@
   <div v-if="banner.length" v-swiper:mySwiper="swiperOption" class="swiper">
     <div v-if="banner.length" class="swiper-wrapper">
       <div v-for="item in banner" :key="item.id" class="swiper-slide">
-        <a :href="item.linkTo">
-          <img :data-src="item.src" class="swiper-lazy" />
-        </a>
+        <img :data-src="item.src" class="swiper-lazy" />
       </div>
     </div>
     <div class="swiper-button-prev swiper-button-white"></div>
@@ -16,6 +14,14 @@
 <script>
 export default {
   name: 'Banner',
+  props: {
+    banner: {
+      type: Array,
+      default() {
+        return []
+      }
+    }
+  },
   data() {
     return {
       swiperOption: {
@@ -37,13 +43,8 @@ export default {
       }
     }
   },
-  props: {
-    banner: {
-      type: Array,
-      default() {
-        return []
-      }
-    }
+  mounted() {
+    this.mySwiper.update()
   }
 }
 </script>

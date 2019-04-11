@@ -11,7 +11,6 @@ export const mutations = {
   },
   setCoupon(state, coupon) {
     state.coupon = coupon
-    console.log(coupon)
   }
 }
 

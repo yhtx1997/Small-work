@@ -1,0 +1,220 @@
+{
+  "store": [
+    {
+      "id": "100",
+      "class": "1",
+      "type": "Code",
+      "title": "$25 Off Your Purchase",
+      "uses": "1.5k uses today",
+      "imgUrl": "/images/airbnb.com-coupons.jpg",
+      "imgAlt": "Airbnb",
+      "linkTo": "100001",
+      "to": "https://www.baidu.com/"
+    },
+    {
+      "id": "101",
+      "class": "1",
+      "type": "Code",
+      "title": "$50 Off Your Purchase",
+      "uses": "1.5k uses today",
+      "imgUrl": "/images/airbnb.com-coupons.jpg",
+      "imgAlt": "Airbnb",
+      "linkTo": "100001",
+      "to": "https://www.baidu.com/"
+    },
+    {
+      "id": "102",
+      "class": "1",
+      "type": "Code",
+      "title": "30% Off Regular Menu Price Orders ",
+      "uses": "11k uses today",
+      "imgUrl": "/images/airbnb.com-coupons.jpg",
+      "imgAlt": "Airbnb",
+      "linkTo": "100001",
+      "to": "https://www.baidu.com/"
+    },
+    {
+      "id": "103",
+      "class": "1",
+      "type": "Code",
+      "title": "Extra 20% Off Sitewide",
+      "uses": "8.2k uses today",
+      "imgUrl": "/images/airbnb.com-coupons.jpg",
+      "imgAlt": "Airbnb",
+      "linkTo": "100001",
+      "to": "https://www.baidu.com/"
+    },
+    {
+      "id": "104",
+      "class": "1",
+      "type": "Code",
+      "title": "Up to 50% Off Your Rental ",
+      "uses": "1.5k uses today",
+      "imgUrl": "/images/airbnb.com-coupons.jpg",
+      "imgAlt": "Airbnb",
+      "linkTo": "100001",
+      "to": "https://www.baidu.com/"
+    },
+    {
+      "id": "105",
+      "class": "1",
+      "type": "Code",
+      "title": "20% Off One Select Regular-Priced Item ",
+      "uses": "3.0k uses today",
+      "imgUrl": "/images/airbnb.com-coupons.jpg",
+      "imgAlt": "Airbnb",
+      "linkTo": "100001",
+      "to": "https://www.baidu.com/"
+    },
+    {
+      "id": "106",
+      "class": "1",
+      "type": "Code",
+      "title": "15% Off Your Purchase",
+      "uses": "4.5k uses today",
+      "imgUrl": "/images/airbnb.com-coupons.jpg",
+      "imgAlt": "Airbnb",
+      "linkTo": "100001",
+      "to": "https://www.baidu.com/"
+    },
+    {
+      "id": "107",
+      "class": "1",
+      "type": "Code",
+      "title": "40% Off With Uber Eats Promo Code!",
+      "uses": "1.0k uses today",
+      "imgUrl": "/images/airbnb.com-coupons.jpg",
+      "imgAlt": "Airbnb",
+      "linkTo": "100001",
+      "to": "https://www.baidu.com/"
+    },
+    {
+      "id": "108",
+      "class": "1",
+      "type": "Code",
+      "title": "5% Off Purchase",
+      "uses": "799 uses today",
+      "imgUrl": "/images/airbnb.com-coupons.jpg",
+      "imgAlt": "Airbnb",
+      "linkTo": "100001",
+      "to": "https://www.baidu.com/"
+    },
+    {
+      "id": "109",
+      "class": "1",
+      "type": "Code",
+      "title": "Free Cheese Sticks on $5+ With Pizza Hut Promo Code  ",
+      "uses": "772 uses today",
+      "imgUrl": "/images/airbnb.com-coupons.jpg",
+      "imgAlt": "Airbnb",
+      "linkTo": "100001",
+      "to": "https://www.baidu.com/"
+    },
+    {
+      "id": "110",
+      "class": "1",
+      "type": "Code",
+      "title": "50% Off Pizza",
+      "uses": "707 uses today",
+      "imgUrl": "/images/airbnb.com-coupons.jpg",
+      "imgAlt": "Airbnb",
+      "linkTo": "100001",
+      "to": "https://www.baidu.com/"
+    },
+    {
+      "id": "200",
+      "class": "2",
+      "type": "Code",
+      "title": "Friends & Family Sale! Take 20% Off",
+      "uses": "13k uses today",
+      "imgUrl": "/images/kohls.com-coupons.jpg",
+      "imgAlt": "Kohl\"s",
+      "linkTo": "100002",
+      "to": "https://www.baidu.com/"
+    },{
+      "id": "201",
+      "class": "2",
+      "type": "Code",
+      "title": "Friends & Family Sale! Take 20% Off",
+      "uses": "13k uses today",
+      "imgUrl": "/images/kohls.com-coupons.jpg",
+      "imgAlt": "Kohl\"s",
+      "linkTo": "100002",
+      "to": "https://www.baidu.com/"
+    },{
+      "id": "202",
+      "class": "2",
+      "type": "Code",
+      "title": "Friends & Family Sale! Take 20% Off",
+      "uses": "13k uses today",
+      "imgUrl": "/images/kohls.com-coupons.jpg",
+      "imgAlt": "Kohl\"s",
+      "linkTo": "100002",
+      "to": "https://www.baidu.com/"
+    },{
+      "id": "203",
+      "class": "2",
+      "type": "Code",
+      "title": "50% Off Everything Photo + Free Same Day Pickup",
+      "uses": "1.2k uses today",
+      "imgUrl": "/images/kohls.com-coupons.jpg",
+      "imgAlt": "Kohl\"s",
+      "linkTo": "100002",
+      "to": "https://www.baidu.com/"
+    },{
+      "id": "204",
+      "class": "2",
+      "type": "Code",
+      "title": "Up to 25% Off With Minimum Spend",
+      "uses": "3.5k uses today",
+      "imgUrl": "/images/kohls.com-coupons.jpg",
+      "imgAlt": "Kohl\"s",
+      "linkTo": "100002",
+      "to": "https://www.baidu.com/"
+    },
+    {
+      "id": "300",
+      "class": "3",
+      "type": "Code",
+      "title": "Extra 25% Off Your Purchase of $40 Or More",
+      "uses": "1.7k uses today",
+      "imgUrl": "/images/bedbathandbeyond.com-coupons.jpg",
+      "imgAlt": "Bed Bath & Beyond®",
+      "linkTo": "100003",
+      "to": "https://www.baidu.com/"
+    },
+    {
+      "id": "400",
+      "class": "4",
+      "type": "Code",
+      "title": "Up to 30% Off With Amazon Coupons And Promo Codes",
+      "uses": "2.4k uses today",
+      "imgUrl": "/images/papajohns.com-coupons.jpg",
+      "imgAlt": "Papa John\"s ",
+      "linkTo": "100004",
+      "to": "https://www.baidu.com/"
+    },
+    {
+      "id": "500",
+      "class": "5",
+      "type": "Code",
+      "title": "16% Off One Order ",
+      "uses": "2.7k uses today",
+      "imgUrl": "/images/doordash.com-coupons.jpg",
+      "imgAlt": "DoorDash",
+      "linkTo": "100005",
+      "to": "https://www.baidu.com/"
+    },
+    {
+      "id": "600",
+      "class": "6",
+      "type": "Code",
+      "title": "50% Off Menu-priced Pizzas at Participating Locations",
+      "uses": "1.8k uses today",
+      "imgUrl": "/images/bestbuy.com-coupons.jpg",
+      "imgAlt": "Best Buy",
+      "linkTo": "100006",
+      "to": "https://www.baidu.com/"
+    }
+  ]
+}
