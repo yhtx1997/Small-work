@@ -35,10 +35,15 @@ export default {
       haveZero: true, // 当前页面有没有 0
       total: 0, // 总分数
       message: '1351',
-      messageShow: false
+      messageShow: false,
+      failure: false
     }
   },
   methods: {
+    debounce (fn, wait) {    
+      var timeout = null
+      return timeout !== null ? clearTimeout(timeout) : timeout = setTimeout(fn, wait)
+    },
     touchstart (e) {
       console.log('start')
       this.startClientX = e.changedTouches[0].clientX
@@ -85,11 +90,14 @@ export default {
       }
     },
     command (keyCode) { // 总部
-      this.WhetherToRotate(keyCode) // 是否需要将上下操作转换为左右操作
-      this.Init() // 数据初始化 合并数字
-      this.IfInvalid() // 判断是否无效
-      this.Rendering(keyCode) // 渲染到页面
-      this.RandomlyCreate() // 随机空白处生成数字 计算总分数 判断是否通关
+    !this.failure && this.debounce(()=>{
+        this.WhetherToRotate(keyCode) // 是否需要将上下操作转换为左右操作
+        this.Init() // 数据初始化 合并数字
+        this.IfInvalid() // 判断是否无效
+        this.Rendering(keyCode) // 渲染到页面
+        this.RandomlyCreate() // 随机空白处生成数字 计算总分数 判断是否通关
+      },300)
+      
     },
     WhetherToRotate (keyCode) { // 是否需要将上下操作转换为左右操作
       if (keyCode === 38 || keyCode === 40) { // 38 是上 40 是下
@@ -164,6 +172,7 @@ export default {
       } else if (!this.haveGrouping && !this.endGap && !this.middleGap) {
         this.message = '抱歉失败了'
         this.messageShow = true
+        this.failure = true
       }
     },
     DataDetails () { // 非零数字详情
